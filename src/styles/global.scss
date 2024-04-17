@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'DistantGalaxy';
+  src: url('/fonts/AdventPro-VariableFont_wdth,wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: darkslategray;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: oldlace;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Advent Pro", sans-serif;
+}
