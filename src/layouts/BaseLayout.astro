@@ -1,9 +1,10 @@
 ---
 const { title } = Astro.props;
+import "gardevoir/dist/index.min.css"
 import "../styles/global.scss";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import "gardevoir/dist/index.min.css"
+
 ---
 
 <html lang="en">
@@ -22,11 +23,12 @@ import "gardevoir/dist/index.min.css"
         font-family:'Arial' sans-serif;
       }
 
-
     </style>
   </head>
   <body>
     <Header />
+    <slot />
+    
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
     <h3>Heading 3</h3>
@@ -49,7 +51,7 @@ import "gardevoir/dist/index.min.css"
       <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
     
-    <!-- <div class="spacer"></div> -->
+    <div class="spacer"></div>
     <Footer />
   </body>
 </html>

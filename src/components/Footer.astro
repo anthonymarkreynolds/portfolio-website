@@ -1,11 +1,25 @@
 <footer>
   <h6>This is the footer!</h6>
+  <div class="sub-footer">
+    <h6>Copyright &copy; {new Date().getFullYear()} Anthony Mark Reynolds</h6>
+  </div>
 </footer>
+
 <style lang="scss">
   footer {
+    > h6 {
+      padding: 1em;
+    }
     flex-grow: 1;
-    padding: 1em;
+    // padding: 1em 0;
     background: lightgray;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    .sub-footer{
+      background: darkgray;
+      padding: 1em;
+      margin-top: auto;
+    }
   }
 </style>

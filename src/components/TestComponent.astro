@@ -1,0 +1,14 @@
+---
+
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a: { data: { pubDate: number; }; }, b: { data: { pubDate: number; }; }) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<ul>
+  {posts.map((post: { url: string | URL | null | undefined; metadata: { title: unknown; }; }) => (
+    <li><a href={post.url}>{post.metadata.title}</a></li>
+  ))}
+</ul>
