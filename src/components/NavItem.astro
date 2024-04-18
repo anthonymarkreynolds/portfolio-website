@@ -4,12 +4,6 @@ let { href, currentPath, children } = Astro.props;
 let isActive = currentPath === href;
 ---
 
-<a class={isActive ? 'active' : ''} href={href}>
+<a class={isActive ? 'current' : ''} href={href}>
   <slot />
 </a>
-
-<style>
-  .active {
-    border: 1px solid blue;
-  }
-</style>

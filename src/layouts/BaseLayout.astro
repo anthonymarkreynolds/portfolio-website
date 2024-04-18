@@ -9,6 +9,11 @@ const { title, description } = Astro.props;
 <html lang="en">
   <head>
     <Head title={title} description={description} />
+    <style>
+      main {
+        flex-grow: 1;
+      }
+    </style>
   </head>
   <body>
     <Header title={title} />
@@ -18,3 +23,4 @@ const { title, description } = Astro.props;
     <Footer />
   </body>
 </html>
+
