@@ -17,5 +17,6 @@ const { Content } = await post.render()
 
 <Main>
     <h1>{post.data.title}</h1>
+		<strong>Published on: {post.data.pubDate.toDateString()}</strong>
     <Content />
 </Main>

@@ -1,0 +1,13 @@
+---
+import NavItem from './NavItem.astro';
+let currentPath = new URL(Astro.request.url).pathname;
+---
+
+<header>
+  <nav>
+    <NavItem href="/" currentPath={currentPath}>Home</NavItem>
+    <NavItem href="/about" currentPath={currentPath}>About</NavItem>
+    <NavItem href="/blog" currentPath={currentPath}>Blog</NavItem>
+  </nav>
+</header>
+

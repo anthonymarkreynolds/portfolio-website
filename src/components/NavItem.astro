@@ -1,0 +1,9 @@
+---
+// NavItem.astro
+let { href, currentPath, children } = Astro.props;
+let isActive = currentPath === href;
+---
+
+<a class={isActive ? 'current' : ''} href={href}>
+  <slot />
+</a>

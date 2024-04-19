@@ -5,8 +5,32 @@ import { getCollection } from "astro:content";
 import Main from "../../layouts/Main.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a: { id: string; slug: string; body: string; collection: string; data: { title: string; description: string; pubDate: Date; updatedDate?: Date | undefined; }; }, b: { id: string; slug: string; body: string; collection: string; data: { title: string; description: string; pubDate: Date; updatedDate?: Date | undefined; }; }) =>
-    a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+  (
+    a: {
+      id: string;
+      slug: string;
+      body: string;
+      collection: string;
+      data: {
+        title: string;
+        description: string;
+        pubDate: Date;
+        updatedDate?: Date | undefined;
+      };
+    },
+    b: {
+      id: string;
+      slug: string;
+      body: string;
+      collection: string;
+      data: {
+        title: string;
+        description: string;
+        pubDate: Date;
+        updatedDate?: Date | undefined;
+      };
+    },
+  ) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
 );
 ---
 
@@ -18,41 +42,42 @@ const posts = (await getCollection("blog")).sort(
     <title>Document</title>
   </head>
   <Main>
+    <h1>Blog</h1>
     <section>
-      <ul>
-        {
-          posts.map(
-            (post: {
-              slug: any;
-              data: {
-                title: unknown;
-                pubDate: {
-                  toISOString: () => string | null | undefined;
-                  toLocaleDateString: (
-                    arg0: string,
-                    arg1: { year: string; month: string; day: string },
-                  ) => unknown;
-                };
+      <h2>Posts</h2>
+      {
+        posts.map(
+          (post: {
+            slug: any;
+            data: {
+              title: unknown;
+              pubDate: {
+                toISOString: () => string | null | undefined;
+                toLocaleDateString: (
+                  arg0: string,
+                  arg1: { year: string; month: string; day: string },
+                ) => unknown;
               };
-            }) => (
-              <li>
-                <a href={`/blog/${post.slug}/`}>
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="date">
-                    <time datetime={post.data.pubDate.toISOString()}>
-                      {post.data.pubDate.toLocaleDateString("en-us", {
-                        year: "numeric",
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </time>
-                  </p>
-                </a>
-              </li>
-            ),
-          )
-        }
-      </ul>
+            };
+          }) => (
+            <div class="notice">
+              <a href={`/blog/${post.slug}/`}>
+                <h4 class="title">{post.data.title}</h4>
+                <p class="date">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString("en-us", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </time>
+                </p>
+              </a>
+            </div>
+          ),
+        )
+      }
     </section>
   </Main>
+
 </html>
