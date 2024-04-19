@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 
 import Main from "../../layouts/Main.astro";
 
-const maxPosts = 1;
+const maxPosts = 2;
 
 const posts = (await getCollection("blog")).sort(
   (
