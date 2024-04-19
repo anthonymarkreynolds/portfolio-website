@@ -51,6 +51,7 @@ const posts = (await getCollection("blog")).sort(
             slug: any;
             data: {
               title: unknown;
+              description: unknown;
               pubDate: {
                 toISOString: () => string | null | undefined;
                 toLocaleDateString: (
@@ -63,6 +64,8 @@ const posts = (await getCollection("blog")).sort(
             <div class="notice">
               <a href={`/blog/${post.slug}/`}>
                 <h4 class="title">{post.data.title}</h4>
+              </a>
+                <p class="description">{post.data.description}</p>
                 <p class="date">
                   <time datetime={post.data.pubDate.toISOString()}>
                     {post.data.pubDate.toLocaleDateString("en-us", {
@@ -72,7 +75,6 @@ const posts = (await getCollection("blog")).sort(
                     })}
                   </time>
                 </p>
-              </a>
             </div>
           ),
         )
