@@ -4,6 +4,8 @@ import { getCollection } from "astro:content";
 
 import Main from "../../layouts/Main.astro";
 
+const maxPosts = 1;
+
 const posts = (await getCollection("blog")).sort(
   (
     a: {
@@ -32,6 +34,9 @@ const posts = (await getCollection("blog")).sort(
     },
   ) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
 );
+
+const showPosts = posts.slice(0, maxPosts);
+const remainingPosts = posts[maxPosts] ? posts.slice(maxPosts).length : 0;
 ---
 
 <html lang="en">
@@ -46,7 +51,7 @@ const posts = (await getCollection("blog")).sort(
     <section>
       <h2>Posts</h2>
       {
-        posts.map(
+        showPosts.map(
           (post: {
             slug: any;
             data: {
@@ -80,6 +85,10 @@ const posts = (await getCollection("blog")).sort(
         )
       }
     </section>
+    
+      {remainingPosts > 0 ? (
+        <strong>{remainingPosts} Hidden</strong>
+      ) : null}
   </Main>
 
 </html>
