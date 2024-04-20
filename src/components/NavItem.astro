@@ -1,0 +1,19 @@
+---
+type Props = {
+  href: string;
+  currentPath?: string;
+};
+
+const {href, currentPath} = Astro.props
+---
+
+<a class="nav-item" {href}>
+  <slot />
+</a>
+
+<style>
+  .active {
+    color: white;
+    background-color: darkslategray;
+  }
+</style>

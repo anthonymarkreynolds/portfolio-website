@@ -1,0 +1,33 @@
+---
+import NavItem from "./NavItem.astro";
+const currentPath = new URL(Astro.request.url).pathname;
+---
+
+<nav>
+  <ul>
+    <li>
+      <NavItem href="/">Home</NavItem>
+    </li>
+    <li>
+      <NavItem href="/blog">Blog</NavItem>
+    </li>
+    <li>
+      <NavItem href="/about">About</NavItem>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  // Add this script to the bottom of your HTML, or in a separate .js file
+  window.addEventListener("DOMContentLoaded", (event) => {
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll(".nav-item");
+
+    navItems.forEach((navItem) => {
+      const itemPath = navItem.getAttribute("href");
+      if (itemPath === currentPath) {
+        navItem.classList.add("active");
+      }
+    });
+  });
+</script>

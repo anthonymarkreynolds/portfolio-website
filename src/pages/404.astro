@@ -1,0 +1,9 @@
+--- 
+import Main from "../layouts/Main.astro";
+const requestedUrl = new URL(Astro.request.url).pathname;
+---
+
+<Main>
+  <h1>404</h1>
+  <p>Page at <code>{requestedUrl}</code> not found</p>
+</Main>
