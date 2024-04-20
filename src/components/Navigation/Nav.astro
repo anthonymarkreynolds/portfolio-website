@@ -1,0 +1,11 @@
+---
+import Navitem from "./Navitem.astro"
+const currentPath = new URL(Astro.request.url).pathname
+console.log(currentPath)
+---
+<nav>
+  <Navitem href="/" currentPath={currentPath}>Home</Navitem>
+  <Navitem href="/blog" currentPath={currentPath}>Blog</Navitem>
+  <Navitem href="/about" currentPath={currentPath}>About</Navitem>
+  <Navitem href="/contact" currentPath={currentPath}>Contact</Navitem>
+</nav>

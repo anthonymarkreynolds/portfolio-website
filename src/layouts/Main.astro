@@ -1,0 +1,31 @@
+---
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+type Props = {
+  pageName: string;
+};
+
+const { pageName } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <Head />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <Header />
+      <hr/>
+      <h1>{pageName}</h1>
+      <slot />
+      <hr/>
+      <Footer />
+    </main>
+  </body>
+</html>

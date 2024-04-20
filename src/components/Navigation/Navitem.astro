@@ -1,0 +1,21 @@
+---
+type Props = {
+  href: string,
+  currentPath: string
+}
+const {href, currentPath} = Astro.props
+const isActive = currentPath === href
+---
+
+<a href={href} class={isActive ? 'active' : ''}>
+  <slot />
+</a>
+
+<style>
+  a {
+    margin-right: .5em;
+  }
+  a.active {
+    border: 1px solid black;
+  }
+</style>
