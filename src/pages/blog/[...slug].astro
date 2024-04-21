@@ -1,0 +1,19 @@
+---
+import { getEntry } from "astro:content";
+
+import Main from "../../layouts/Main.astro";
+const pageName = "test";
+const { slug } = Astro.params
+
+const entry = await getEntry('blog', slug as string);
+
+if (!entry) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await entry.render()
+---
+
+<Main {pageName}>
+  <Content />
+</Main>

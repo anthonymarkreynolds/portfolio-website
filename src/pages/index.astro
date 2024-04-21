@@ -1,8 +1,18 @@
 ---
-const pageName = "Home";
 import Main from "../layouts/Main.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+const pageName = "Home";
+
+import { getCollection, type CollectionEntry } from "astro:content";
+import { getPosts } from "../utils/getPosts"
+
+
+const latestArticle: CollectionEntry<'blog'> = (await getPosts({latest: true}))[0];
 ---
 
 <Main {pageName}>
 	<p>Welcome to the {pageName} page!</p>
+	<h2>Latest Article</h2>
+	<ArticleCard post={latestArticle} />
 </Main>
+../utils/getPosts
