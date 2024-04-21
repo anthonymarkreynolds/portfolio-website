@@ -1,22 +1,35 @@
 ---
+import Tags from "./Tags.astro";
+
 import { type CollectionEntry } from "astro:content";
 
 type Props = {
   post: CollectionEntry<"blog">;
 };
 
-const { data: { title, description}, slug } = Astro.props.post
+const {
+  data: { title, description, tags },
+  slug,
+} = Astro.props.post;
 ---
 
 <article>
-<a href=`/blog/${slug}`>
-  <h2>{title}</h2>
+  <a href=`/blog/${slug}`>
+    <h2>{title}</h2>
+  </a>
   <p>{description}</p>
-</a>
+  <div>
+    <strong>tags:</strong>
+    <Tags {tags} />
+  </div>  
 </article>
 
 <style>
   article {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 1em;
     border: 1px solid darkslategray;
     border-radius: 0.5rem;
