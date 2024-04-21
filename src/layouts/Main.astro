@@ -21,24 +21,31 @@ const { pageName } = Astro.props;
   <Header />
   <body>
     <main>
-      <div class="slat">
+      <div class="slat-1">
         <h1>{pageName}</h1>
       </div>
-      <slot />
-      <hr />
+      <div class="slat-2">
+        <slot />
+      </div>
     </main>
     <Footer />
   </body>
-</html>
 
-<style>
-  .slat {
-    background-color: lightslategray;
-    h1 {
-      color: white;
-      padding: 1rem;
+  <style>
+    .slat-1 {
+      background-color: lightslategray;
+      display: block;
+      h1 {
+        color: white;
+        padding: 1rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+    }
+    .slat-2 {
       max-width: 700px;
       margin: 0 auto;
+      padding: 1rem;
     }
-  }
-</style>
+  </style>
+</html>
