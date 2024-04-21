@@ -1,0 +1,21 @@
+---
+import Main from "../../../layouts/Main.astro";
+import ArticleCard from "../../../components/ArticleCard.astro";
+import { getPosts } from "../../../utils/getPosts";
+
+const {tag} = Astro.params
+
+if (tag === undefined) {
+  Astro.redirect("/blog")
+}
+
+const posts = (await getPosts({})).filter(post => post.data.tags.includes(tag as string))
+
+const pageName = `Posts tagged with ${tag}`
+
+
+---
+
+<Main {pageName}>
+   {posts.map(post => <ArticleCard {post} />)} 
+</Main>

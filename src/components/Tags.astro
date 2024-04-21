@@ -1,20 +1,24 @@
 ---
-const {tags } = Astro.props
+const { tags } = Astro.props;
 
 interface Props {
   tags: string[];
 }
 ---
 
-{tags.map(tag => (
-  <span>{tag}</span>
-))}
+{
+  tags.map((tag) => (
+    <a href={`/blog/tags/${tag}`}>
+      <span>{tag}</span>
+    </a>
+  ))
+}
 
 <style>
-  span {
+  a {
     margin-right: 5px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }  
+  }
 </style>

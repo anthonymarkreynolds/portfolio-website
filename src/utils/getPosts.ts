@@ -5,7 +5,7 @@ type Options = {
   limit?: number
 }
 
-export const getPosts = async ({limit, latest}: Options): Promise<CollectionEntry<'blog'>[]> => {
+export const getPosts = async ({limit, latest}: Options ): Promise<CollectionEntry<'blog'>[]> => {
   const posts: CollectionEntry<'blog'>[] = (await getCollection("blog"))
     .sort((a,b) => a.data.datePublished.valueOf() - b.data.datePublished.valueOf())
   if (latest) {
