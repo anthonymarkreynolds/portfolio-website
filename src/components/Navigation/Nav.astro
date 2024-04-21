@@ -1,11 +1,44 @@
 ---
-import Navitem from "./Navitem.astro"
-const currentPath = new URL(Astro.request.url).pathname
-console.log(currentPath)
+import Navitem from "./Navitem.astro";
+const currentPath = new URL(Astro.request.url).pathname;
+console.log(currentPath);
 ---
-<nav>
-  <Navitem href="/" currentPath={currentPath}>Home</Navitem>
-  <Navitem href="/blog" currentPath={currentPath}>Blog</Navitem>
-  <Navitem href="/about" currentPath={currentPath}>About</Navitem>
-  <Navitem href="/contact" currentPath={currentPath}>Contact</Navitem>
-</nav>
+
+<div class="slat">
+  <div class="nav-container">
+    <strong>My Site</strong>
+    <nav>
+      <Navitem href="/" currentPath={currentPath}>Home</Navitem>
+      <Navitem href="/blog" currentPath={currentPath}>Blog</Navitem>
+      <Navitem href="/about" currentPath={currentPath}>About</Navitem>
+      <Navitem href="/contact" currentPath={currentPath}>Contact</Navitem>
+    </nav>
+  </div>
+</div>
+
+<style lang="scss">
+  strong {
+    display: block;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    border-bottom: 1px solid black;
+  }
+  nav {
+  //  border: 1px dotted red;
+    // background: white;
+    display: flex;
+    
+  }
+  .nav-container {
+    // border: 1px dotted blue;
+    // background: oldlace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .slat {
+    background-color: aliceblue;
+  }
+</style>

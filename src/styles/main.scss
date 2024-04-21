@@ -1,5 +1,34 @@
 body {
-  margin: 0 auto;
-  padding: 0;
-  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Quicksand', Arial, sans-serif;
+  hr {
+    color: lightgray;
+  }
+  min-height: 100vh;
+}
+
+/* Register your custom font family and tell the browser where to find it. */
+@font-face {
+  font-family: 'Castoro Tiling';
+  src: url('/public/fonts/CastoroTitling-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: 'Quicksand';
+  src: url('/public/fonts/Quicksand-Medium.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1 {
+  border-bottom: 1px solid lightgray;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Castoro Tiling', 'Times New Roman', serif;
 }

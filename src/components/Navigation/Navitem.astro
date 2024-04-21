@@ -13,9 +13,17 @@ const isActive = currentPath === href
 
 <style>
   a {
-    margin-right: .5em;
+    display:inline-block;
+    padding: 1em;
+    background-color: cyan;
+    &:hover {
+      background-color: lightcyan;
+
+    }
   }
   a.active {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    background-color: lightslategray;
+    color: white;
   }
 </style>

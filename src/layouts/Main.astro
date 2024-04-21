@@ -18,14 +18,27 @@ const { pageName } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>Document</title>
   </head>
+  <Header />
   <body>
     <main>
-      <Header />
-      <hr/>
-      <h1>{pageName}</h1>
+      <div class="slat">
+        <h1>{pageName}</h1>
+      </div>
       <slot />
-      <hr/>
-      <Footer />
+      <hr />
     </main>
+    <Footer />
   </body>
 </html>
+
+<style>
+  .slat {
+    background-color: lightslategray;
+    h1 {
+      color: white;
+      padding: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+</style>
