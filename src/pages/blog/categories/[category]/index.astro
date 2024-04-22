@@ -1,0 +1,11 @@
+---
+import Main from "../../../../layouts/Main.astro";
+
+const { category } = Astro.params
+
+const pageName = category ? `Category: ${category}` : "Blog";
+---
+
+<Main {pageName}>
+  <p>functionality coming soon</p>
+</Main>
