@@ -12,6 +12,8 @@ const {
   slug,
 } = Astro.props.post;
 console.log(slug)
+const category = slug.split("/")[1]
+console.log("category: ", category)
 ---
 
 <article>
@@ -19,6 +21,10 @@ console.log(slug)
     <h2>{title}</h2>
   </a>
   <p>{description}</p>
+  <div>
+    <p><strong>category:</strong>
+    <a href=`/blog/categories/${category}`>{category}</a></p>
+  </div>
   <div>
     <strong>tags:</strong>
     <Tags {tags} />
