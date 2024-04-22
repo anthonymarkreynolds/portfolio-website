@@ -1,9 +1,14 @@
 ---
 import Main from "../../../../layouts/Main.astro";
 
+import { Categories } from "../../../../content/config";
+
 const { category } = Astro.params
 
-const pageName = category ? `Category: ${category}` : "Blog";
+const isCategory = category as string in Categories
+console.log(isCategory)
+
+const pageName = isCategory ? `Category: ${category}` : `Category not found`
 ---
 
 <Main {pageName}>

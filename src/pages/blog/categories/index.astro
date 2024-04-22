@@ -1,10 +1,20 @@
 ---
 import Main from "../../../layouts/Main.astro";
 
-const pageName = "Post Categories";
+import { Categories } from "../../../content/config"
 
+const pageName = "Post Categories";
 ---
 
 <Main {pageName}>
   <p>Categories will be displayed here...</p>
-</Main>
+  <ul>
+    {Object.values(Categories).map((category: string) => <li><a href={`/blog/categories/${category}`}>{category}</a></li>)}
+  </ul>
+</Main>../../../constants
+
+<style>
+  li {
+    list-style-type: circle;
+  }
+</style>
