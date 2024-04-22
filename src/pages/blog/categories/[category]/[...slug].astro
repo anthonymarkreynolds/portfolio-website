@@ -2,18 +2,23 @@
 import { getEntry } from "astro:content";
 
 import Main from "../../../../layouts/Main.astro";
-const pageName = "test";
-const { slug } = Astro.params
+import Tags from "../../../../components/Tags.astro";
 
-const entry = await getEntry('blog', slug as string);
+const pageName = "test";
+const { slug, category } = Astro.params;
+
+const entry = await getEntry("blog", `categories/${category}/${slug}` as string);
 
 if (!entry) {
-  return Astro.redirect('/404');
+  return Astro.redirect("/404");
 }
-
-const { Content } = await entry.render()
+const { tags } = entry.data;
+const { Content } = await entry.render();
 ---
 
 <Main {pageName}>
+  <p><strong>category: </strong>{category}</p>
+  <p><strong>tags: </strong><Tags {tags} /></p>
+  <br />
   <Content />
 </Main>
