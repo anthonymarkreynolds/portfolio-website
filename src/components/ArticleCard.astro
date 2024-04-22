@@ -8,12 +8,10 @@ type Props = {
 };
 
 const {
-  data: { title, description, tags },
+  data: { title, description, tags, category },
   slug,
 } = Astro.props.post;
-console.log(slug)
-const category = slug.split("/")[1]
-console.log("category: ", category)
+
 ---
 
 <article>

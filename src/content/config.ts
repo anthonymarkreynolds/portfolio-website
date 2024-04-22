@@ -1,8 +1,8 @@
 import { defineCollection, z } from "astro:content";
 
 export enum Categories {
-  Philosphy = "philosophy",
-  Test      = "test"
+  Philosphy = "Philosophy",
+  Test      = "Test"
 }
 
 const blog = defineCollection({

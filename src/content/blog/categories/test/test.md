@@ -2,7 +2,7 @@
 title: 'test'
 description: 'test description'
 datePublished: 'April 21 2024'
-category: 'test'
+category: 'Test'
 tags: ['test', 'test2']
 ---
 

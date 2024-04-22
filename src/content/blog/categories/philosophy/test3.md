@@ -2,7 +2,7 @@
 title: 'Test Post in Philosophy Category'
 description: 'test description'
 datePublished: 'April 21 2024'
-category: 'philosophy'
+category: 'Philosophy'
 tags: ['test']
 ---
 
