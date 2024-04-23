@@ -9,7 +9,7 @@ const pageName = "Post Categories";
 <Main {pageName}>
   <p>Categories will be displayed here...</p>
   <ul>
-    {Object.values(Categories).map((category: string) => <li><a href={`/blog/categories/${category}`}>{category}</a></li>)}
+    {Object.values(Categories).map((category: string) => <li><a href={`/blog/categories/${category.toLowerCase()}`}>{category}</a></li>)}
   </ul>
 </Main>../../../constants
 

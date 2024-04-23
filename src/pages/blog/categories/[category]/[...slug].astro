@@ -4,10 +4,15 @@ import { getEntry } from "astro:content";
 import Main from "../../../../layouts/Main.astro";
 import Tags from "../../../../components/Tags.astro";
 
+import { Categories } from "../../../../content/config";
+
 const pageName = "test";
 const { slug, category } = Astro.params;
 
-const entry = await getEntry("blog", `categories/${category}/${slug}` as string);
+const entry = await getEntry(
+  "blog",
+  `categories/${category}/${slug}` as string,
+);
 
 if (!entry) {
   return Astro.redirect("/404");
@@ -17,7 +22,11 @@ const { Content } = await entry.render();
 ---
 
 <Main {pageName}>
-  <p><strong>category: </strong><a href=`/blog/categories/${category}`>{category}</a> </p>
+  <p>
+    <strong>category: </strong><a href=`/blog/categories/${category}`
+      >{category}</a
+    >
+  </p>
   <p><strong>tags: </strong><Tags {tags} /></p>
   <br />
   <Content />
