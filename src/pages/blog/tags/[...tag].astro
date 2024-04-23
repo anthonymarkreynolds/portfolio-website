@@ -2,20 +2,21 @@
 import Main from "../../../layouts/Main.astro";
 import ArticleCard from "../../../components/ArticleCard.astro";
 import { getPosts } from "../../../utils/getPosts";
+import { Tags } from "../../../content/config";
 
-const {tag} = Astro.params
+const { tag } = Astro.params
+const tags: string[] = Object.keys(Tags)
+const isTag = tags.includes(tag as string)
 
-if (tag === undefined) {
-  Astro.redirect("/blog")
-}
 
-const posts = (await getPosts({})).filter(post => post.data.tags.includes(tag as string))
+const posts = (await getPosts({})).filter(post => post.data.tags.includes(tag as Tags))
 
-const pageName = `Posts tagged with ${tag}`
+const pageName = isTag ? `Posts tagged with ${tag}` : `No posts found for ${tag}`
 
 
 ---
 
 <Main {pageName}>
    {posts.map(post => <ArticleCard {post} />)} 
+   <a href="/blog">back to blog</a>
 </Main>

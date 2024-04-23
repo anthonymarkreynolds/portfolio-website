@@ -5,6 +5,11 @@ export enum Categories {
   Test      = "Test"
 }
 
+export enum Tags {
+  test = "test",
+  test2 = "test2"
+}
+
 const blog = defineCollection({
   type: "content",
   schema: z.object({
@@ -13,7 +18,7 @@ const blog = defineCollection({
     datePublished: z.coerce.date(),
     dateUpdated: z.coerce.date().optional(),
     category: z.nativeEnum(Categories),
-    tags: z.array(z.string()),
+    tags: z.array(z.nativeEnum(Tags)),
   })
 })
 

@@ -1,6 +1,8 @@
 ---
 import Main from "../../../../layouts/Main.astro";
-
+import ArticleCard from "../../../../components/ArticleCard.astro";
+import { getPosts } from "../../../../utils/getPosts";
+import { type CollectionEntry } from "astro:content";
 import { Categories } from "../../../../content/config";
 
 const { category } = Astro.params
@@ -8,11 +10,23 @@ const { category } = Astro.params
 const categories: string[] = Object.values(Categories)
 const isCategory: boolean = categories.includes(category as string)
 
+let posts: CollectionEntry<'blog'>[];
+if (isCategory) {
+  posts = (await getPosts({})).filter(post => post.data.category === category)
+} else {
+  posts = []
+}
+
+
 console.log(category, isCategory)
 
 const pageName = isCategory ? `Category: ${category}` : `Category '${category}' not found`
 ---
 
 <Main {pageName}>
-  <p>functionality coming soon</p>
+  {posts.map(post => (
+    <ArticleCard {post}/>
+  ))}
+  <a href="/blog">Back to blog.</a>
 </Main>
+
