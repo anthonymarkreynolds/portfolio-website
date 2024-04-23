@@ -17,7 +17,7 @@ const { Content } = await entry.render();
 ---
 
 <Main {pageName}>
-  <p><strong>category: </strong>{category}</p>
+  <p><strong>category: </strong><a href=`/blog/categories/${category}`>{category}</a> </p>
   <p><strong>tags: </strong><Tags {tags} /></p>
   <br />
   <Content />
