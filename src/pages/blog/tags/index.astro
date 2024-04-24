@@ -1,0 +1,20 @@
+---
+import Main from "../../../layouts/Main.astro";
+import { Tags } from "../../../content/config";
+
+const tags: string[] = Object.values(Tags);
+
+const pageName = "Tags";
+---
+
+<Main {pageName}>
+  <ul>
+    {
+      tags.map((tag) => (
+        <li>
+          <a href={`/blog/tags/${tag}`}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Main>

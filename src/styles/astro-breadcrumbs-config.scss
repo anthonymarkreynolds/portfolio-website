@@ -1,0 +1,6 @@
+@use "astro-breadcrumbs/breadcrumbs.scss" with (
+  /// Your config goes here
+  /// $size-font: 12px;
+  // $color-link: rebeccapurple;
+  $overflow-behaviour: "ellipsis" !default
+);

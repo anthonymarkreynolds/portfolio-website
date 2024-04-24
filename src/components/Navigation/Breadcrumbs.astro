@@ -1,0 +1,60 @@
+---
+const { currentPath } = Astro.props;
+console.log("breadcrumb currentPath:", currentPath);
+// const getBreadcrumbs = (path: string) => {
+//   if (typeof path !== "string") {
+//     console.error("currentPath is not a string:", currentPath);
+//     return [];
+//   }
+  
+//   // if (path.endsWith("/")) splitPath.pop(); // remove last element if path has a trailing '/'
+//   // let breadcrumbs = [];
+
+//   // while (splitPath.length > 0) {
+//   //   // stop until where the first path preceeding the trailing '/' at index 1 i.e ['', 'first_path', 'second_path' , ...]
+//   //   splitPath.pop();
+//   //   breadcrumbs.push(splitPath.join("/"));
+//   //   console.log(breadcrumbs)
+//   }
+
+//   return breadcrumbs;
+// };
+const breadcrumbs: string[] = currentPath.split("/").reduce((acc: string[], cur: string, index: number) => (
+  [...acc, `${acc[index]}${index ? "/" : ""}${cur}` ]
+  ),[""]).slice(1)
+// const breadcrumbs = getBreadcrumbs(currentPath as string).reverse();
+console.log(breadcrumbs)
+---
+
+<div>
+  <!-- <span><a href="/">Home</a> {">"}</span> -->
+  {
+    breadcrumbs &&
+      breadcrumbs.map((breadcrumb, index, array) => {
+        if (index > 0) {
+          return (
+            <span>
+              <a href={breadcrumb}>{breadcrumb.split("/").pop()}</a> { index < array.length - 1 && ">"}{" "}
+            </span>
+          )
+        } else {
+          return ( 
+            <span>
+              <a href="/">Home</a>{index < array.length - 1 && ">"}
+            </span>
+          )
+        }
+      })
+  }
+</div>
+<style>
+  div {
+    display: flex;
+    margin: 0 auto;
+    /* justify-content: center; */
+    align-content: center;
+  }
+  a {
+    padding: 0.25em;
+  }
+</style>
