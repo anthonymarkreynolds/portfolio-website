@@ -1,7 +1,7 @@
 ---
 import Main from "../../../layouts/Main.astro";
 import ArticleCard from "../../../components/ArticleCard.astro";
-import { getPosts } from "../../../utils/getPosts";
+import { getPosts } from "../../../utils/utils"
 import { Tags } from "../../../content/config";
 
 const { tag } = Astro.params
@@ -11,7 +11,7 @@ const isTag = tags.includes(tag as string)
 
 const posts = (await getPosts({})).filter(post => post.data.tags.includes(tag as Tags))
 
-const pageName = isTag ? `Posts tagged with ${tag}` : `No posts found for ${tag}`
+const pageName = isTag ? `Posts tagged with #${tag}` : `No posts found for #${tag}`
 
 
 ---

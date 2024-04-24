@@ -16,3 +16,11 @@ export const getPosts = async ({limit, latest}: Options ): Promise<CollectionEnt
     return posts
   }
 }
+
+export const capitalize = (str: string):string => {
+  if (str[1]) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  } else {
+    return str.toUpperCase()
+  }
+}

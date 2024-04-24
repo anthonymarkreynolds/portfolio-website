@@ -2,6 +2,7 @@
 import Tags from "./Tags.astro";
 
 import { type CollectionEntry } from "astro:content";
+import { capitalize } from "../utils/utils";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -11,7 +12,6 @@ const {
   data: { title, description, tags, category },
   slug,
 } = Astro.props.post;
-
 ---
 
 <article>
@@ -20,13 +20,15 @@ const {
   </a>
   <p>{description}</p>
   <div>
-    <p><strong>category:</strong>
-    <a href=`/blog/categories/${category.toLowerCase()}`>{category}</a></p>
+    <p>
+      <strong>category:</strong>
+      <a href=`/blog/categories/${category.toLowerCase()}`>{capitalize(category)}</a>
+    </p>
   </div>
   <div>
     <strong>tags:</strong>
     <Tags {tags} />
-  </div>  
+  </div>
 </article>
 
 <style>

@@ -4,7 +4,7 @@ import ArticleCard from "../components/ArticleCard.astro";
 const pageName = "Home";
 
 import { getCollection, type CollectionEntry } from "astro:content";
-import { getPosts } from "../utils/getPosts"
+import { getPosts } from "../utils/utils"
 
 
 const latestArticle: CollectionEntry<'blog'> = (await getPosts({latest: true}))[0];

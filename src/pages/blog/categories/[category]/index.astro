@@ -1,11 +1,12 @@
 ---
 import Main from "../../../../layouts/Main.astro";
 import ArticleCard from "../../../../components/ArticleCard.astro";
-import { getPosts } from "../../../../utils/getPosts";
+import { getPosts, capitalize } from "../../../../utils/utils";
 import { type CollectionEntry } from "astro:content";
 import { Categories } from "../../../../content/config";
 
 const { category } = Astro.params
+const categoryTitle = capitalize(category as string)
 
 const categories: string[] = Object.values(Categories)
 const isCategory: boolean = categories.includes(category as string)
@@ -17,10 +18,7 @@ if (isCategory) {
   posts = []
 }
 
-
-console.log(category, isCategory)
-
-const pageName = isCategory ? `Category: ${category}` : `Category '${category}' not found`
+const pageName = isCategory ? `Category: ${categoryTitle}` : `Category '${category}' not found`
 ---
 
 <Main {pageName}>

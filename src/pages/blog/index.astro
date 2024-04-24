@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import Main from "../../layouts/Main.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
-import { getPosts } from "../../utils/getPosts";
+import { getPosts } from "../../utils/utils"
 
 const posts: CollectionEntry<'blog'>[] = await getPosts({limit: 5})
 
