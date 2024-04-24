@@ -3,13 +3,14 @@ import Tags from "./Tags.astro";
 
 import { type CollectionEntry } from "astro:content";
 import { capitalize } from "../utils/utils";
+import { Icon } from "astro-icon/components";
 
 type Props = {
   post: CollectionEntry<"blog">;
 };
 
 const {
-  data: { title, description, tags, category },
+  data: { title, description, datePublished, tags, category },
   slug,
 } = Astro.props.post;
 ---
@@ -21,25 +22,42 @@ const {
   <p>{description}</p>
   <div>
     <p>
-      <strong>category:</strong>
-      <a href=`/blog/categories/${category.toLowerCase()}`>{capitalize(category)}</a>
+      <Icon name="mdi:calendar" />
+      <strong>published:</strong>
+      {
+        datePublished.toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })
+      }
     </p>
   </div>
   <div>
+    <p>
+      <Icon name="mdi:category" />
+      <strong>category:</strong>
+      <a href=`/blog/categories/${category.toLowerCase()}`
+        >{capitalize(category)}</a
+      >
+    </p>
+  </div>
+  <div>
+    <Icon name="mdi:tag" />
     <strong>tags:</strong>
     <Tags {tags} />
   </div>
-</article>
 
-<style>
-  article {
-    display: flex;
-    gap: 1em;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1em;
-    border: 1px solid darkslategray;
-    border-radius: 0.5rem;
-    margin-bottom: 0.25rem;
-  }
-</style>
+  <style>
+    article {
+      display: flex;
+      gap: 1em;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1em;
+      border: 1px solid darkslategray;
+      border-radius: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</article>
