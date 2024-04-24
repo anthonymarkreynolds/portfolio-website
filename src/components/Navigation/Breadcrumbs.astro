@@ -19,14 +19,15 @@ console.log("breadcrumb currentPath:", currentPath);
 
 //   return breadcrumbs;
 // };
-const breadcrumbs: string[] = currentPath.split("/").reduce((acc: string[], cur: string, index: number) => (
+const breadcrumbs: string[] = currentPath === '/' ? ["/"] : currentPath.split("/").reduce((acc: string[], cur: string, index: number) => (
   [...acc, `${acc[index]}${index ? "/" : ""}${cur}` ]
   ),[""]).slice(1)
+
 // const breadcrumbs = getBreadcrumbs(currentPath as string).reverse();
 console.log(breadcrumbs)
 ---
 
-<div>
+<div class="breadcrumbs">
   <!-- <span><a href="/">Home</a> {">"}</span> -->
   {
     breadcrumbs &&
@@ -40,7 +41,7 @@ console.log(breadcrumbs)
         } else {
           return ( 
             <span>
-              <a href="/">Home</a>{index < array.length - 1 && ">"}
+              <a href="/">Home</a>{array.length > 1 && ">"}
             </span>
           )
         }
@@ -48,11 +49,13 @@ console.log(breadcrumbs)
   }
 </div>
 <style>
-  div {
+  div.breadcrumbs {
     display: flex;
-    margin: 0 auto;
+    margin: .25em auto;
+    padding-left: .75em;
     /* justify-content: center; */
     align-content: center;
+    max-width: 700px;
   }
   a {
     padding: 0.25em;
