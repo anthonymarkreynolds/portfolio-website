@@ -6,7 +6,7 @@ console.log(currentPath);
 
 <div class="slat">
   <div class="nav-container">
-    <strong>My Site</strong>
+    <a href="/"><strong>ANTHONY REYNOLDS</strong></a>
     <nav>
       <Navitem href="/" currentPath={currentPath}>Home</Navitem>
       <Navitem href="/blog" currentPath={currentPath}>Blog</Navitem>
@@ -18,11 +18,13 @@ console.log(currentPath);
 
 <style lang="scss">
   @import "../../styles/utils/variables";
-  strong {
+  a {
     color: map-get($colors, "light");
     display: block;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin: 0 1rem;
+    // text-decoration: overline;
+    // font-weight: light;
     // border-bottom: 1px solid black;
   }
   nav {
