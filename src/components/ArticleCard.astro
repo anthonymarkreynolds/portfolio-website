@@ -53,9 +53,12 @@ const {
 </article>
 
 <style lang="scss">
+  @import "../styles/utils/_variables.scss";
   article {
-    // background: papayawhip;
+    box-shadow: 0 .2em .2em rgba(0, 0, 0, 0.2);
+    background: lighten(map-get($colors, 'secondary'),5%);
     // border: 1px solid lighten(lightslategray, 20%);
+    border-radius: 0.5rem;
     overflow: hidden;
     a#title-link {
       display: flex;
@@ -64,12 +67,19 @@ const {
       // flex-grow: 0;
       // background-color: aliceblue;
       // justify-content: space-between;
+      &:hover {
+        color: map-get($colors, 'dark');
+      }
+      &:hover h3, &:hover .style-block {
+        background-color: map-get($colors, 'highlight');
+      }
       h3 {
         // margin-right: auto;
         // width:100%;
+        margin: 0;
         background-color: slategray;
         padding: 1em;
-        padding-right: calc(1em + 5ch);
+        padding-right: calc(1em + 7ch);
         padding-bottom: 0.5em;
         clip-path: polygon(
           calc(100% - 7ch) 0%,
@@ -84,6 +94,7 @@ const {
         background-color: slategray;
         flex-grow: 1;
         clip-path: polygon(100% 25%, 100% 100%, 0% 100%, 0% 25%);
+        // max-height: 2em;
       }
     }
     .details {

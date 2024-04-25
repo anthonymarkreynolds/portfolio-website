@@ -4,7 +4,8 @@
 body {
   display: flex;
   flex-direction: column;
-  font-family: 'Quicksand', Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 400;
   background-color: map-get($colors, 'light');
   hr {
     color: lightgray;
@@ -15,7 +16,15 @@ body {
 /* Register your custom font family and tell the browser where to find it. */
 @font-face {
   font-family: 'Castoro Tiling';
-  src: url('/public/fonts/CastoroTitling-Regular.ttf') format('ttf');
+  src: url('/public/fonts/CastoroTitling-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Goldman';
+  src: url('/public/fonts/Goldman-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -23,14 +32,27 @@ body {
  
 @font-face {
   font-family: 'Quicksand';
-  src: url('/public/fonts/Quicksand-Medium.ttf') format('ttf');
+  src: url('/public/fonts/Quicksand-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/public/fonts/OpenSans-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Castoro Tiling', 'Times New Roman', serif;
+  font-family: 'Goldman', Arial, sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  text-shadow: 0 0.2em 0.2em map-get($colors, 'dark');
 }
 
 .hl-on-hover:hover {
@@ -40,8 +62,33 @@ h1,h2,h3,h4,h5,h6 {
 
 a {
   color: map-get($colors, 'dark');
-  // text-decoration: none;
+  text-decoration: none;
   &:hover {
     color: map-get($colors, 'highlight');
+  }
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: #{6/$i}rem;
+  }
+}
+
+@media only screen and (max-width: map-get($breakpoints,tablet)) {
+  @for $i from 1 through 6 {
+    h#{$i} {
+      font-size: #{5/$i}rem;
+    }
+  }
+}
+
+@media only screen and (max-width: map-get($breakpoints,mobile)) {
+  h1 {
+    font-size: calc(50vw * .25);
+  }
+  @for $i from 2 through 6 {
+    h#{$i} {
+      font-size: #{4/$i}rem;
+    }
   }
 }

@@ -7,7 +7,7 @@ export default defineConfig({
   output: 'server',
   vite: {
     ssr: {
-      noExternal: ['gardevoir']
+      noExternal: ['modern-normalize']
     }
   }
 });

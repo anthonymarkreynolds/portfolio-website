@@ -12,9 +12,3 @@ const pageName = "Post Categories";
     {Object.values(Categories).map((category: string) => <li><a href={`/blog/categories/${category.toLowerCase()}`}>{category}</a></li>)}
   </ul>
 </Main>
-
-<style>
-  li {
-    list-style-type: circle;
-  }
-</style>
