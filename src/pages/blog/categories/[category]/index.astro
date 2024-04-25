@@ -5,27 +5,29 @@ import ArticleCard from "../../../../components/ArticleCard.astro";
 import { getPosts, capitalize } from "../../../../utils/utils";
 import { type CollectionEntry } from "astro:content";
 import { Categories } from "../../../../content/config";
+import BackButton from "../../../../components/Navigation/BackButton.astro";
 
-const { category } = Astro.params
-const categoryTitle = capitalize(category as string)
+const { category } = Astro.params;
+const categoryTitle = capitalize(category as string);
 
-const categories: string[] = Object.values(Categories)
-const isCategory: boolean = categories.includes(category as string)
+const categories: string[] = Object.values(Categories);
+const isCategory: boolean = categories.includes(category as string);
 
-let posts: CollectionEntry<'blog'>[];
+let posts: CollectionEntry<"blog">[];
 if (isCategory) {
-  posts = (await getPosts({})).filter(post => post.data.category === category)
+  posts = (await getPosts({})).filter(
+    (post) => post.data.category === category,
+  );
 } else {
-  posts = []
+  posts = [];
 }
 
-const pageName = isCategory ? `Category: ${categoryTitle}` : `Category '${category}' not found`
+const pageName = isCategory
+  ? `Category: ${categoryTitle}`
+  : `Category '${category}' not found`;
 ---
 
 <Main {pageName}>
-  {posts.map(post => (
-    <ArticleCard {post}/>
-  ))}
-  <a href="/blog">Back to blog.</a>
+  {posts.map((post) => <ArticleCard {post} />)}
+  <BackButton />
 </Main>
-

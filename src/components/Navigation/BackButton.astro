@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<a class="back-button hl-on-hover" href="/blog"><Icon name="mdi:arrow-left-bold"/>Back to blog</a>
+
+<style lang="scss">
+  @import "../../styles/utils/_variables.scss";
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: lightslategray;
+    color: white;
+    padding: .25em;
+    border-radius: .25em;
+  }
+
+  .back-button:hover {
+    // background-color: var(--color-primary-dark);
+  }
+</style>

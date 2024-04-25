@@ -1,5 +1,6 @@
 ---
 import Main from "../../../layouts/Main.astro";
+import BackButton from "../../../components/Navigation/BackButton.astro";
 
 import { Categories } from "../../../content/config"
 
@@ -11,4 +12,5 @@ const pageName = "Post Categories";
   <ul>
     {Object.values(Categories).map((category: string) => <li><a href={`/blog/categories/${category.toLowerCase()}`}>{category}</a></li>)}
   </ul>
+  <BackButton />
 </Main>

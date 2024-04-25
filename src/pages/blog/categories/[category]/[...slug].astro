@@ -3,6 +3,7 @@ import { getEntry } from "astro:content";
 
 import Main from "../../../../layouts/Main.astro";
 import Tags from "../../../../components/Tags.astro";
+import BackButton from "../../../../components/Navigation/BackButton.astro";
 
 import { Categories } from "../../../../content/config";
 
@@ -30,5 +31,5 @@ const pageName = title;
   <p><strong>tags: </strong><Tags {tags} /></p>
   <br />
   <Content />
-  <a href="/blog">Back to blog</a>
+  <BackButton />
 </Main>
