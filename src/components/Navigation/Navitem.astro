@@ -5,21 +5,20 @@ type Props = {
 }
 const {href, currentPath} = Astro.props
 const isActive = new RegExp(`^${href}(\/|$)`).test(currentPath);
+const activeClass = isActive ? 'active' : '';
 ---
 
-<a href={href} class={isActive ? 'active' : ''}>
+<a href={href} class={`hl-on-hover ${activeClass}`}>
   <slot />
 </a>
 
-<style>
+<style lang="scss">
+  @import "../../styles/utils/_variables";
   a {
     display:inline-block;
     padding: 1em;
+    color: map-get($colors, 'light');
     /* background-color: cyan; */
-    &:hover {
-      background-color: lightgray;
-
-    }
   }
   a.active {
     /* border: 1px solid black; */

@@ -20,78 +20,78 @@ const {
     <h3>{title}</h3>
     <div class="style-block"></div>
   </a>
-  <p>{description}</p>
-  <div>
-    <p>
-      <Icon name="mdi:calendar" />
-      <strong>published:</strong>
-      {
-        datePublished.toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })
-      }
-    </p>
-  </div>
-  <div>
-    <p>
-      <Icon name="mdi:category" />
-      <strong>category:</strong>
-      <a href=`/blog/categories/${category.toLowerCase()}`
-        >{capitalize(category)}</a
-      >
-    </p>
-  </div>
-  <div>
-    <Icon name="mdi:tag" />
-    <strong>tags:</strong>
-    <Tags {tags} />
-  </div>
-
-  <style lang="scss">
-    article {
-      // background: papayawhip;
-      // border: 1px solid lighten(lightslategray, 20%);
-      overflow: hidden;
-      background-color: white;
-      a#title-link {
-        display: flex;
-        width: 100%;
-        color: white;
-        // flex-grow: 0;
-        background-color: aliceblue;
-        // justify-content: space-between;
-        h3 {
-          // margin-right: auto;
-          // width:100%;
-          background-color: slategray;
-          padding: 1em;
-          padding-right: calc(1em + 5ch);
-          padding-bottom: 0.5em;
-          clip-path: polygon(
-            calc(100% - 7ch) 0%,
-            calc(100% - 5ch) 25%,
-            100% 25%,
-            100% 100%,
-            0% 100%,
-            0% 0%
-          );
+  <div class="details">
+    <p>{description}</p>
+    <div >
+      <p>
+        <Icon name="mdi:calendar" />
+        <strong>published:</strong>
+        {
+          datePublished.toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })
         }
-        .style-block {
-          background-color: slategray;
-          flex-grow: 1;
-          clip-path: polygon(
-            100% 25%,
-            100% 100%,
-            0% 100%,
-            0% 25%
-          );
-        }
-      }
-      // border-radius: 0.5rem;
-      margin-top: 0.25rem;
-      margin-bottom: 0.25rem;
-    }
-  </style>
+      </p>
+    </div>
+    <div>
+      <p>
+        <Icon name="mdi:category" />
+        <strong>category:</strong>
+        <a href=`/blog/categories/${category.toLowerCase()}`
+          >{capitalize(category)}</a
+        >
+      </p>
+    </div>
+    <div>
+      <Icon name="mdi:tag" />
+      <strong>tags:</strong>
+      <Tags {tags} />
+    </div>
+  </div>
 </article>
+
+<style lang="scss">
+  article {
+    // background: papayawhip;
+    // border: 1px solid lighten(lightslategray, 20%);
+    overflow: hidden;
+    a#title-link {
+      display: flex;
+      width: 100%;
+      color: white;
+      // flex-grow: 0;
+      // background-color: aliceblue;
+      // justify-content: space-between;
+      h3 {
+        // margin-right: auto;
+        // width:100%;
+        background-color: slategray;
+        padding: 1em;
+        padding-right: calc(1em + 5ch);
+        padding-bottom: 0.5em;
+        clip-path: polygon(
+          calc(100% - 7ch) 0%,
+          calc(100% - 5ch) 25%,
+          100% 25%,
+          100% 100%,
+          0% 100%,
+          0% 0%
+        );
+      }
+      .style-block {
+        background-color: slategray;
+        flex-grow: 1;
+        clip-path: polygon(100% 25%, 100% 100%, 0% 100%, 0% 25%);
+      }
+    }
+    .details {
+      padding: .5em;
+      background-color: white;
+    }
+    // border-radius: 0.5rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+</style>

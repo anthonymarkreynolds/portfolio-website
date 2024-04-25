@@ -1,0 +1,14 @@
+$breakpoints:(
+  mobile: 600px,
+  tablet: 900px,
+  desktop: 1200px
+);
+
+$colors:(
+  primary: #2980B9,
+  secondary: #2C3E50,
+  tertiary: #7F8C8D,
+  light: #ECF0F1,
+  dark: #2C3E50, //same as secondary
+  highlight: #EBAE5C
+);

@@ -46,7 +46,7 @@ console.log(breadcrumbs);
           return (
             <span>
               <a
-                class={index + 1 === array.length ? "current" : ""}
+                class={`hl-on-hover ${index + 1 === array.length ? "current" : ""}`}
                 href={breadcrumb}
               >
                 {breadcrumb.split("/").pop()}
@@ -57,7 +57,10 @@ console.log(breadcrumbs);
         } else {
           return (
             <span>
-              <a class={index + 1 === array.length ? "current" : ""} href="/">
+              <a
+                class={`hl-on-hover ${index + 1 === array.length ? "current" : ""}`}
+                href="/"
+              >
                 Home
               </a>
               {/* {array.length > 1 && ">"} */}
@@ -68,6 +71,7 @@ console.log(breadcrumbs);
   }
 </div>
 <style lang="scss">
+  @import "../../styles/utils/_variables";
   div.breadcrumbs {
     display: flex;
     margin: 0.25em auto;
@@ -77,7 +81,7 @@ console.log(breadcrumbs);
     max-width: 700px;
   }
   a {
-    border-bottom: 1px solid lightslategray;
+    // border-bottom: 1px solid lightslategray;
     padding: 0.25em calc(0.25em + 1ch);
     margin-right: -0.75ch;
     clip-path: polygon(
@@ -89,7 +93,7 @@ console.log(breadcrumbs);
       1ch 50%
     );
     &:nth-child(odd) {
-      background-color: lightgray;
+      background-color: darken(map-get($colors, 'light'),20%);
     }
     &.current {
       background-color: lightslategray;

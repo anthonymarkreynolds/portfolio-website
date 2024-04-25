@@ -17,22 +17,20 @@ console.log(currentPath);
 </div>
 
 <style lang="scss">
+  @import "../../styles/utils/variables";
   strong {
-    color: lightslategray;
+    color: map-get($colors, "light");
     display: block;
     font-size: 1.5rem;
     margin: 0 1rem;
-    border-bottom: 1px solid black;
+    // border-bottom: 1px solid black;
   }
   nav {
-  //  border: 1px dotted red;
+    //  border: 1px dotted red;
     // background: white;
     display: flex;
-    
   }
   .nav-container {
-    // border: 1px dotted blue;
-    // background: oldlace;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,6 +38,7 @@ console.log(currentPath);
     margin: 0 auto;
   }
   .slat {
-    background-color: midnightblue;
+    // background-color: midnightblue;
+    background-color: map-get($colors, "secondary");
   }
 </style>

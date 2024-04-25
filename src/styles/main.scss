@@ -1,7 +1,11 @@
+@import 'utils/variables';
+
+
 body {
   display: flex;
   flex-direction: column;
   font-family: 'Quicksand', Arial, sans-serif;
+  background-color: map-get($colors, 'light');
   hr {
     color: lightgray;
   }
@@ -27,4 +31,17 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Castoro Tiling', 'Times New Roman', serif;
+}
+
+.hl-on-hover:hover {
+  color: map-get($colors, 'dark');
+  background-color: map-get($colors, 'highlight') !important;
+}
+
+a {
+  color: map-get($colors, 'dark');
+  // text-decoration: none;
+  &:hover {
+    color: map-get($colors, 'highlight');
+  }
 }
