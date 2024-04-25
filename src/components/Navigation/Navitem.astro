@@ -4,7 +4,7 @@ type Props = {
   currentPath: string
 }
 const {href, currentPath} = Astro.props
-const isActive = currentPath === href
+const isActive = new RegExp(`^${href}(\/|$)`).test(currentPath);
 ---
 
 <a href={href} class={isActive ? 'active' : ''}>

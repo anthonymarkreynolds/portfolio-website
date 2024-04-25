@@ -6,7 +6,7 @@ console.log("breadcrumb currentPath:", currentPath);
 //     console.error("currentPath is not a string:", currentPath);
 //     return [];
 //   }
-  
+
 //   // if (path.endsWith("/")) splitPath.pop(); // remove last element if path has a trailing '/'
 //   // let breadcrumbs = [];
 
@@ -19,12 +19,22 @@ console.log("breadcrumb currentPath:", currentPath);
 
 //   return breadcrumbs;
 // };
-const breadcrumbs: string[] = currentPath === '/' ? ["/"] : currentPath.split("/").reduce((acc: string[], cur: string, index: number) => (
-  [...acc, `${acc[index]}${index ? "/" : ""}${cur}` ]
-  ),[""]).slice(1)
+const breadcrumbs: string[] =
+  currentPath === "/"
+    ? ["/"]
+    : currentPath
+        .split("/")
+        .reduce(
+          (acc: string[], cur: string, index: number) => [
+            ...acc,
+            `${acc[index]}${index ? "/" : ""}${cur}`,
+          ],
+          [""],
+        )
+        .slice(1);
 
 // const breadcrumbs = getBreadcrumbs(currentPath as string).reverse();
-console.log(breadcrumbs)
+console.log(breadcrumbs);
 ---
 
 <div class="breadcrumbs">
@@ -35,29 +45,56 @@ console.log(breadcrumbs)
         if (index > 0) {
           return (
             <span>
-              <a href={breadcrumb}>{breadcrumb.split("/").pop()}</a> { index < array.length - 1 && ">"}{" "}
+              <a
+                class={index + 1 === array.length ? "current" : ""}
+                href={breadcrumb}
+              >
+                {breadcrumb.split("/").pop()}
+              </a>{" "}
+              {/* {index < array.length - 1 && ">"}{" "} */}
             </span>
-          )
+          );
         } else {
-          return ( 
+          return (
             <span>
-              <a href="/">Home</a>{array.length > 1 && ">"}
+              <a class={index + 1 === array.length ? "current" : ""} href="/">
+                Home
+              </a>
+              {/* {array.length > 1 && ">"} */}
             </span>
-          )
+          );
         }
       })
   }
 </div>
-<style>
+<style lang="scss">
   div.breadcrumbs {
     display: flex;
-    margin: .25em auto;
-    padding-left: .75em;
+    margin: 0.25em auto;
+    padding-left: 0.75em;
     /* justify-content: center; */
     align-content: center;
     max-width: 700px;
   }
   a {
-    padding: 0.25em;
+    border-bottom: 1px solid lightslategray;
+    padding: 0.25em calc(0.25em + 1ch);
+    margin-right: -0.75ch;
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 1ch) 0%,
+      100% 50%,
+      calc(100% - 1ch) 100%,
+      0% 100%,
+      1ch 50%
+    );
+    &:nth-child(odd) {
+      background-color: lightgray;
+    }
+    &.current {
+      background-color: lightslategray;
+      color: white;
+      /* border-radius: 0 25em 25em 0; */
+    }
   }
 </style>

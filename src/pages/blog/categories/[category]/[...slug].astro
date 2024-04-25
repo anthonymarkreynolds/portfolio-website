@@ -6,7 +6,6 @@ import Tags from "../../../../components/Tags.astro";
 
 import { Categories } from "../../../../content/config";
 
-const pageName = "test";
 const { slug, category } = Astro.params;
 
 const entry = await getEntry(
@@ -17,8 +16,9 @@ const entry = await getEntry(
 if (!entry) {
   return Astro.redirect("/404");
 }
-const { tags } = entry.data;
+const { tags, title } = entry.data;
 const { Content } = await entry.render();
+const pageName = title;
 ---
 
 <Main {pageName}>
