@@ -3,6 +3,7 @@ import Main from "../../../layouts/Main.astro";
 import BackButton from "../../../components/Navigation/BackButton.astro";
 
 import { Categories } from "../../../content/config"
+import { capitalize } from "../../../utils/utils";
 
 const pageName = "Post Categories";
 ---
@@ -10,7 +11,7 @@ const pageName = "Post Categories";
 <Main {pageName}>
   <p>Categories will be displayed here...</p>
   <ul>
-    {Object.values(Categories).map((category: string) => <li><a href={`/blog/categories/${category.toLowerCase()}`}>{category}</a></li>)}
+    {Object.values(Categories).map((category: string) => <li><a href={`/blog/categories/${category.toLowerCase()}`}>{capitalize(category)}</a></li>)}
   </ul>
   <BackButton />
 </Main>

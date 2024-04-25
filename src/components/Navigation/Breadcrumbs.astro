@@ -1,4 +1,6 @@
 ---
+import { capitalize } from "../../utils/utils";
+
 const { currentPath } = Astro.props;
 console.log("breadcrumb currentPath:", currentPath);
 // const getBreadcrumbs = (path: string) => {
@@ -27,7 +29,7 @@ const breadcrumbs: string[] =
         .reduce(
           (acc: string[], cur: string, index: number) => [
             ...acc,
-            `${acc[index]}${index ? "/" : ""}${cur}`,
+            `${acc[index]}${index ? "/" : ""}${decodeURIComponent(cur)}`,
           ],
           [""],
         )
@@ -49,7 +51,7 @@ console.log(breadcrumbs);
                 class={`hl-on-hover ${index + 1 === array.length ? "current" : ""}`}
                 href={breadcrumb}
               >
-                {breadcrumb.split("/").pop()}
+                {capitalize(breadcrumb.split("/").pop() as string)}
               </a>{" "}
               {/* {index < array.length - 1 && ">"}{" "} */}
             </span>
@@ -81,6 +83,7 @@ console.log(breadcrumbs);
     max-width: 700px;
   }
   a {
+    white-space: nowrap;
     // border-bottom: 1px solid lightslategray;
     padding: 0.25em calc(0.25em + 1ch);
     margin-right: -0.75ch;

@@ -28,6 +28,8 @@ const pageName = isCategory
 ---
 
 <Main {pageName}>
-  {posts.map((post) => <ArticleCard {post} />)}
+  {posts.map((post) => <ArticleCard {post} />) || (
+    <p>There are no posts in the category '{category}'</p>
+  )}
   <BackButton />
 </Main>
