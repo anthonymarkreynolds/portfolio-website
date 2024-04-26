@@ -2,25 +2,6 @@
 import { capitalize } from "../../utils/utils";
 
 const { currentPath } = Astro.props;
-console.log("breadcrumb currentPath:", currentPath);
-// const getBreadcrumbs = (path: string) => {
-//   if (typeof path !== "string") {
-//     console.error("currentPath is not a string:", currentPath);
-//     return [];
-//   }
-
-//   // if (path.endsWith("/")) splitPath.pop(); // remove last element if path has a trailing '/'
-//   // let breadcrumbs = [];
-
-//   // while (splitPath.length > 0) {
-//   //   // stop until where the first path preceeding the trailing '/' at index 1 i.e ['', 'first_path', 'second_path' , ...]
-//   //   splitPath.pop();
-//   //   breadcrumbs.push(splitPath.join("/"));
-//   //   console.log(breadcrumbs)
-//   }
-
-//   return breadcrumbs;
-// };
 const breadcrumbs: string[] =
   currentPath === "/"
     ? ["/"]
@@ -34,13 +15,9 @@ const breadcrumbs: string[] =
           [""],
         )
         .slice(1);
-
-// const breadcrumbs = getBreadcrumbs(currentPath as string).reverse();
-console.log(breadcrumbs);
 ---
 
 <div class="breadcrumbs">
-  <!-- <span><a href="/">Home</a> {">"}</span> -->
   {
     breadcrumbs &&
       breadcrumbs.map((breadcrumb, index, array) => {
@@ -52,8 +29,7 @@ console.log(breadcrumbs);
                 href={breadcrumb}
               >
                 {capitalize(breadcrumb.split("/").pop() as string)}
-              </a>{" "}
-              {/* {index < array.length - 1 && ">"}{" "} */}
+              </a>
             </span>
           );
         } else {
