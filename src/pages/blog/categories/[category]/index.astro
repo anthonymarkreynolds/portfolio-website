@@ -28,7 +28,7 @@ const pageName = isCategory
 ---
 
 <Main {pageName}>
-  {posts?.map((post) => <ArticleCard {post} />) && (
+  {posts.length ? posts.map((post) => <ArticleCard {post} />) : (
     <p>There are currently no posts in the category '{category}'</p>
   )}
   <BackButton />
