@@ -1,8 +1,30 @@
 ---
-import Nav from "./Navigation/Nav.astro"
+import Nav from "./Navigation/Nav.astro";
 ---
 
+  <div class="notice">
+    <span>🏗️ Site under construction 🧑‍💻</span>
+  </div>
 <header>
   <Nav />
 </header>
 
+<style lang="scss">
+  @import "../styles/utils/_variables.scss";
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+    .notice {
+      background-color: map-get($colors, "primary");
+    }
+    span {
+      display: block;
+      margin: 0;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      font-size: 1.25rem;
+    }
+</style>

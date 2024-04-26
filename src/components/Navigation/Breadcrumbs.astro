@@ -52,13 +52,15 @@ const breadcrumbs: string[] =
   @import "../../styles/utils/_variables";
   div.breadcrumbs {
     display: flex;
-    margin: 0.25em auto;
+    margin: 0 auto;
     padding-left: 0.75em;
     /* justify-content: center; */
     align-content: center;
     max-width: 700px;
+    // backdrop-filter: blur(4px);
   }
   a {
+    display: block;
     white-space: nowrap;
     // border-bottom: 1px solid lightslategray;
     padding: 0.25em calc(0.25em + 1ch);
