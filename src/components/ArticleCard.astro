@@ -46,7 +46,7 @@ const {
         }
       </span>
     </div>
-    <section class="main-details">
+    <section class="card-main-details">
       <div class="card-category">
         <p>
           <Icon name="mdi:category" />
@@ -69,108 +69,143 @@ const {
         <Tags {tags} />
       </p>
     </div>
+    <div class="card-read-more">
+      <a class="hl-on-hover" href=`/blog/${slug}`>
+        <Icon name="mdi:read-more-outline" size={20} />
+        <span>Read more</span>
+      </a>
+    </div>
   </section>
-</article>
 
-<style lang="scss">
-  @import "../styles/utils/_variables.scss";
-  article {
-    border-radius: 0.5em;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    box-shadow: -0.2em 0.2em 0.2em rgba(map-get($colors, "dark"), 0.2);
-    overflow: hidden;
-    transition: all .2s ease;
-    &:hover {
-    box-shadow: -0.2em 0.2em 0.2em rgba(map-get($colors, "dark"), 0.6);
-    transition: none;
-    }
-    a.title-link {
-      display: flex;
-      width: 100%;
-      color: white;
+  <style lang="scss">
+    @import "../styles/utils/_variables.scss";
+    article {
+      border-radius: 0.5em;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      box-shadow: -0.2em 0.2em 0.2em rgba(map-get($colors, "dark"), 0.2);
+      overflow: hidden;
+      transition: box-shadow 0.2s ease;
       &:hover {
-        color: map-get($colors, "dark");
+        box-shadow: -0.2em 0.2em 0.2em rgba(map-get($colors, "dark"), 0.6);
+        transition: none;
       }
-      &:hover h3,
-      &:hover .style-block {
-        background-color: map-get($colors, "highlight");
+      a.title-link {
+        display: flex;
+        width: 100%;
+        color: white;
+        &:hover {
+          color: map-get($colors, "dark");
+        }
+        &:hover h3,
+        &:hover .style-block {
+          background-color: map-get($colors, "highlight");
+        }
+        h3 {
+          transition: all 0.2s ease;
+          margin: 0;
+          background-color: slategray;
+          padding: 0.55em;
+          padding-right: calc(1em + 7ch);
+          clip-path: polygon(
+            calc(100% - 7ch) 0%,
+            calc(100% - 5ch) 25%,
+            100% 25%,
+            100% 100%,
+            0% 100%,
+            0% 0%
+          );
+        }
+        .style-block {
+          transition: all 0.2s ease;
+          background-color: slategray;
+          flex-grow: 1;
+          clip-path: polygon(100% 25%, 100% 100%, 0% 100%, 0% 25%);
+          // max-height: 2em;
+        }
       }
-      h3 {
-      transition: all .2s ease;
-        margin: 0;
-        background-color: slategray;
-        padding: .55em;
-        padding-right: calc(1em + 7ch);
-        clip-path: polygon(
-          calc(100% - 7ch) 0%,
-          calc(100% - 5ch) 25%,
-          100% 25%,
-          100% 100%,
-          0% 100%,
-          0% 0%
-        );
+      .card-body {
+        display: flex;
+        // padding: 0.5em;
+        background-color: white;
       }
-      .style-block {
-      transition: all .2s ease;
-        background-color: slategray;
-        flex-grow: 1;
-        clip-path: polygon(100% 25%, 100% 100%, 0% 100%, 0% 25%);
-        // max-height: 2em;
+      .card-main-details {
+        width: 100%;
+      }
+      .card-details {
+        padding: 0.5em;
+      }
+      .card-description {
+        padding: 0 0.5em;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        text-align: justify;
+      }
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        background-color: darken(map-get($colors, "light"),0%);
+      }
+      .card-read-more {
+        // margin: 0 .5em;
+        a {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5em;
+          padding: 0.75em;
+          // background-color: darken(map-get($colors, "light"), 0%);
+          color: map-get($colors, "primary");
+          // border-radius: .25em;
+          &:hover {
+            color: map-get($colors, "dark");
+          }
+        }
+      }
+      .card-category {
+        background-color: darken(map-get($colors, "light"), 5%);
+        padding: 0.5em;
+        p {
+          margin: 0;
+
+        }
+        a {
+          text-decoration: underline;
+        }
+      }
+      // border-radius: 0.5rem;
+      .card-date {
+        border-top: 0.25em solid map-get($colors, "primary");
+        padding: 0.5em 1em;
+        gap: 0.125em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: map-get($colors, "secondary");
+        color: lighten(map-get($colors, "tertiary"), 30%);
+        top: 0;
+        span {
+          display: block;
+        }
+        .day {
+          font-size: 1.75em;
+        }
+        .month {
+          font-size: 1.25em;
+          padding-bottom: 0.125em;
+        }
+        .year {
+          font-size: 0.85em;
+        }
+      }
+      .card-tags {
+        margin: 0 1em;
+        p {
+          margin: 0;
+        }
       }
     }
-    .card-body {
-      display: flex;
-      // padding: 0.5em;
-      background-color: white;
-    }
-    .card-details {
-      padding: 0.5em;
-    }
-    .card-description {
-      padding: 0 .5em;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-    }
-    .card-footer {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background-color: map-get($colors, "light");
-    }
-    .card-category {
-      background-color: map-get($colors, 'light');
-      padding: .5em;
-      p {margin: 0} 
-      a {text-decoration: underline;}
-    }
-    // border-radius: 0.5rem;
-    .card-date {
-      border-top: .25em solid map-get($colors, "primary");
-      padding: 0.5em 1em;
-      gap: 0.125em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: map-get($colors, "secondary");
-      color: lighten(map-get($colors, "tertiary"), 30%);
-      top:0;
-      span {
-        display: block;
-      }
-      .day {
-        font-size: 1.75em;
-      }
-      .month {
-        font-size: 1.25em;
-        padding-bottom: 0.125em;
-      }
-      .year {
-        font-size: 0.85em;
-      }
-    }
-    .card-tags {
-      margin: 0 1em;
-    }
-  }
-</style>
+  </style>
+</article>
