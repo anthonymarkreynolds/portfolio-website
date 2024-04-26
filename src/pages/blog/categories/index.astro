@@ -9,7 +9,7 @@ const pageName = "Post Categories";
 ---
 
 <Main {pageName}>
-  <p>Categories will be displayed here...</p>
+  <p>Current post categories...</p>
   <ul>
     {Object.values(Categories).map((category: string) => <li><a href={`/blog/categories/${category.toLowerCase()}`}>{capitalize(category)}</a></li>)}
   </ul>
