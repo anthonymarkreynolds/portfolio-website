@@ -57,7 +57,7 @@ const {
         </p>
       </div>
       <div class="card-description">
-        <p>{description.slice(0,256)}...</p>
+        <p>{description.slice(0, 256)}...</p>
       </div>
     </section>
   </section>
@@ -94,6 +94,8 @@ const {
         display: flex;
         width: 100%;
         color: white;
+        align-items: stretch;
+
         &:hover {
           color: map-get($colors, "dark");
         }
@@ -107,6 +109,8 @@ const {
           background-color: slategray;
           padding: 0.5em;
           padding-right: calc(1em + 7ch);
+
+          // TODO: change cut-off point non-percentage based
           clip-path: polygon(
             calc(100% - 7ch) 0%,
             calc(100% - 5ch) 25%,
@@ -119,9 +123,12 @@ const {
         .style-block {
           transition: all 0.2s ease;
           background-color: slategray;
+          min-width: 2ch;
           flex-grow: 1;
-          clip-path: polygon(100% 25%, 100% 100%, 0% 100%, 0% 25%);
-          // max-height: 2em;
+          margin: 0;
+
+          // TODO: change cut-off point non-percentage based
+          clip-path: polygon(calc(100% - 2ch) 25%, 100% 50%, 100% 100%, 0% 100%, 0% 25%);
         }
       }
       .card-body {
@@ -146,7 +153,7 @@ const {
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
-        background-color: darken(map-get($colors, "light"),0%);
+        background-color: darken(map-get($colors, "light"), 0%);
       }
       .card-read-more {
         // margin: 0 .5em;
@@ -156,7 +163,7 @@ const {
           gap: 0.5em;
           padding: 0.75em;
           // background-color: darken(map-get($colors, "light"), 0%);
-          color: darken(map-get($colors, "primary"),10%);
+          color: darken(map-get($colors, "primary"), 10%);
           // border-radius: .25em;
           &:hover {
             color: map-get($colors, "dark");
