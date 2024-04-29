@@ -19,23 +19,39 @@ const latestArticle: CollectionEntry<"blog"> = (
 		</div>
 	</section>
 	<section class="slat-1">
-		<div class="hero constrain"></div>
+		<div class="hero constrain">
+			<h3>I'm Anthony</h3>
+			<ul>
+				<li>Web Developer</li>
+				<li>Prompt Engineer</li>
+				<li>Problem Solver</li>
+			</ul>
+		</div>
 	</section>
-	<section class="slat-2 tes-bg">
+	<section class="slat-2 ">
 		<div class="about-me constrain">
 			<h2>Latest Post</h2>
 			<ArticleCard post={latestArticle} />
 		</div>
 	</section>
-	<div class="slat-3"></div>
-	<h2>Here is where I will put other things...</h2>
-	<p>As I built this site out I will be able to display new features</p>
+	<div class="slat-3">
+		<div class="constrain">
+			<h2>Discover</h2>
+		</div>
+	</div>
+	<!-- <section>
+		<div class="constrain">
+			<h2>New things soon to come...</h2>
+			<p>
+				As I build this site out, I will display new features on the homepage.
+			</p>
+		</div>
+	</section> -->
 </Home>
 
 <style lang="scss">
 	@import "../styles/utils/_variables.scss";
 	.slat-0 {
-		background-color: map-get($colors, "light");
 		padding: 1em 1em 2em 1em;
 		margin: -1.75rem 0;
 		div {
@@ -43,8 +59,7 @@ const latestArticle: CollectionEntry<"blog"> = (
 		}
 		h2 {
 			text-align: center;
-			margin-bottom: .25em;
-
+			margin-bottom: 0.25em;
 		}
 		p {
 			text-align: center;
@@ -80,8 +95,8 @@ const latestArticle: CollectionEntry<"blog"> = (
 		// );
 	}
 	.slat-2 {
-		background-color: map-get($colors, "light");
-		padding-bottom: 4em;
+		// background-color: map-get($colors, "light");
+		padding-bottom: 6em;
 		clip-path: polygon(
 			100% 0%,
 			100% 90%,
@@ -96,7 +111,10 @@ const latestArticle: CollectionEntry<"blog"> = (
 		margin-bottom: -2em;
 		z-index: 300;
 		h2 {
-			margin-top: 0;
+			margin: 0;
+			padding: 1em 0;
+			padding-bottom: .5em;
+			color: map-get($colors, "dark");
 		}
 	}
 	.about-me {
@@ -105,6 +123,16 @@ const latestArticle: CollectionEntry<"blog"> = (
 	.slat-3 {
 		min-height: 400px;
 		background-color: lightslategray;
+		// color: map-get($colors, "light");
+		color: white;
+		// background-color: map-get($colors, "primary");
+		h2 {
+			margin: 0;
+			padding: 1em;
+			padding-bottom: 0;
+			text-align: center;
+			border-bottom: 1px solid map-get($colors, "light");
+		}
 	}
 	.hero {
 		h2 {

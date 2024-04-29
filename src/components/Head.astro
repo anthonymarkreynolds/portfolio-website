@@ -1,4 +1,12 @@
 ---
 import "modern-normalize"
 import "../styles/main.scss";
+
+type Props = {
+  pageName: string;
+};
+
+const {pageName} = Astro.props;
 ---
+
+<title>Anthony Reynolds - {pageName}</title>
